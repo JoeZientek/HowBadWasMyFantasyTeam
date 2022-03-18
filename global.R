@@ -18,4 +18,3 @@ scores_2019 <- scores_2019 %>%
 # create default roster formation
 rosterFormation <- c("QB", "RB", "RB", "WR", "WR", "TE", "Flex", 
                      "Bench", "Bench", "Bench")
-
