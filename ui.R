@@ -5,7 +5,7 @@ ui <- fluidPage(
          uiOutput("rosterSelections")
   ), # end column
   
-  column(8 
-         #mod_figures_ui("figures")
+  column(8,  
+         mod_figures_ui("figures")
   )# end column
 )# end fluidPage

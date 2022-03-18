@@ -17,21 +17,26 @@ server <- function(input, output, session){
     })# end lapply
   })# end renderUI
   
-  # go through all inputs and add them to a reactive values object
+  testRoster <- reactive({input$test})
+  observeEvent(input$test,{
+    ##testRoster <- input$test
+    print(testRoster())
+  })
+  
   observeEvent(
     # trigger this observeEvent when any of the dynamically generated inputs are changed
     lapply(1:length(rosterFormation), function(x)
       input[[paste0(rosterFormation[x], x)]]
     ),{
       
+      # go through all inputs and add them to a reactive values object
       for(x in 1:length(rosterFormation)){
         pos <- rosterFormation[x]
         selectedRoster[[paste0(pos, x)]] <- input[[paste0(pos, x)]]
       }# end for x loop
       
+      mod_figures_server("figures", selectedRoster)
+      
   })# end observeEvent
-  
-  # add server logic
-  mod_figures_server("figures", selectedRoster)
   
 }# end server
